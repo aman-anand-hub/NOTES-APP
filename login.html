@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to My Keepp</title>
+    <link rel="stylesheet" href="./stlyesLogin.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="main-heading-div">
+            <h2 class="main-heading">LOGIN</h2>
+        </div>
+
+        <div class="email-box">
+            <h4>Email</h4>
+            <input type="email" id="email">
+        </div>
+
+        <div class="email-box">
+            <h4>Password</h4>
+            <input type="password" id="password">
+        </div>
+
+        <button class="submit-button" id="loginBtn">Login</button>
+
+        <div class="new-user-link-div">
+            <p>
+                <a href="register.html" class="new-user-link">New user?</a>
+            </p>
+        </div>
+
+    </div>
+</body>
+
+<script type="module">
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+
+let loginBtn = document.getElementById("loginBtn");
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAmnjUZujEUwIrGiCrTWzmiSUCjG2jPaPs",
+    authDomain: "notes-app-f25c6.firebaseapp.com",
+    projectId: "notes-app-f25c6",
+    storageBucket: "notes-app-f25c6.appspot.com",
+    messagingSenderId: "937596555139",
+    appId: "1:937596555139:web:b36ce9f45f5eca6bcb70b6",
+    measurementId: "G-3QCHDK34JD"
+  };
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+loginBtn.addEventListener("click", async (e) => {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert(user.email);
+
+      })
+      
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+      window.location= "/";
+  });
+
+
+</script>
+
+</html>

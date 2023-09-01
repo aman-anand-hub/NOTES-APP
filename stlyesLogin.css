@@ -1,0 +1,83 @@
+body{
+    background-color: plum;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.main-heading-div{
+
+    height: fit-content;
+    width: fit-content;
+    margin-top: 1rem;
+}
+
+.main-heading{
+    color: black;
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    font-family: monospace;
+    border-radius: 15px;
+    border: 7px solid lightgray;
+    box-sizing: border-box;
+
+}
+
+.email-box{
+    height: fit-content;
+    width: fit-content;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.email-box input{
+    width: 15rem;
+    height: 1.5rem;
+}
+
+.new-user-link{
+    font-size: 18px;
+    color: purple;
+}
+
+.new-user-link-div{
+    margin-bottom: 4rem;
+}
+
+.submit-button-div{
+    height: max-content;
+    width: max-content;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.submit-button{
+    padding: 10px 30px;
+    background-color: plum;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-family: monospace;
+    font-weight: 1000;
+    color: white;   
+}
+
+.submit-button:hover{
+    background-color: rgb(122, 25, 122);
+    border-radius: 8px;
+    cursor: pointer;
+}

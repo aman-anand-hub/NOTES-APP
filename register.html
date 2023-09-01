@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register to My Keepp</title>
+    <link rel="stylesheet" href="./stlyesLogin.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="main-heading-div">
+            <h2 class="main-heading">REGISTER!</h2>
+        </div>
+
+        <div class="email-box">
+            <h4>Email</h4>
+            <input type="email" id="new_email">
+        </div>
+
+        <div class="email-box">
+            <h4>Password</h4>
+            <input type="password" id="new_pass">
+        </div>
+
+        <div class="submit-button-div">
+            <button class="submit-button" id="signupBtn">Submit</button>
+        </div>
+
+        <a href="login.html" class="new-user-link-div">Already signed up?</div>
+
+    </div>
+</body>
+
+<script type="module">
+
+    import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
+import {
+  doc,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
+
+let btn = document.getElementById("signupBtn");
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAmnjUZujEUwIrGiCrTWzmiSUCjG2jPaPs",
+    authDomain: "notes-app-f25c6.firebaseapp.com",
+    projectId: "notes-app-f25c6",
+    storageBucket: "notes-app-f25c6.appspot.com",
+    messagingSenderId: "937596555139",
+    appId: "1:937596555139:web:b36ce9f45f5eca6bcb70b6",
+    measurementId: "G-3QCHDK34JD"
+  };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app); 
+
+btn.addEventListener("click", (e) => {
+  let email = document.getElementById("new_email").value;
+  let password = document.getElementById("new_pass").value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      await setDoc(
+        doc(db, "users", user.email),
+        {
+            name: "",
+            age: 0,
+        },
+        { merge: true }
+      );
+
+      alert("Done ! Press OK");
+      window.location = "/";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
+    });
+});
+
+</script>
+
+</html>
