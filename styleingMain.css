@@ -68,6 +68,31 @@ body
     cursor: pointer;
 }
 
+.noteStruct{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    background-color: rgb(122, 25, 122);
+    background-color: #f8ceec;
+    background-image: linear-gradient(315deg, rgb(122, 25, 122) 0%, rgb(183, 83, 183) 74%);
+    padding: 0.5rem 0.5rem;
+    font-family: monospace;
+    color: white;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+#myNotesid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
 @media screen and (max-width:720px)
 {
     .custom-textarea{
