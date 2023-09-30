@@ -30,6 +30,13 @@ import {
 
   
 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      
+    } else {
+      window.location = "/login.html";
+    }
+  });
 
 const textAreaDisplay= document.getElementById("dynamic_keep");
 const addButton= document.getElementById("add_button");
